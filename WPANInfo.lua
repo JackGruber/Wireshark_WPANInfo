@@ -44,6 +44,11 @@ function ChangeAddress(address)
     return address
 end 
 
+function GetFileName()
+   local str = debug.getinfo(2, "S").source:sub(2)
+   return tostring( str:match("(.*)(lua)").."lookup.csv" ) 
+end
+
 function ReadLookup()  
     lookup_table = {}
     for line in io.lines( GetFileName() ) do 
@@ -81,7 +86,6 @@ function GetLookup16(zbee_address)
     return ""
 end
 
-os.remove(GetFileNameMap()) 
 local lookup = ReadLookup()
 
 function wpanlookup.dissector(tvb, pinfo, tree)
@@ -100,9 +104,9 @@ function wpanlookup.dissector(tvb, pinfo, tree)
     dst = tostring( dst )
 
     -- Add the result to the tree
-    subtree:add(f_src, src )
+    subtree:add(f_src, ChangeAddress(src) )
     subtree:add(f_srcname, GetLookup(src) )
-    subtree:add(f_dst, dst )
+    subtree:add(f_dst, ChangeAddress(dst) )
     subtree:add(f_dstname, GetLookup(dst) )
 end
 
