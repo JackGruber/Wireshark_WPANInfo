@@ -10,4 +10,3 @@ The Plugin add new fields to Wireshark for ZigBee/IEEE 802.15.4 device lookups.
 **Tip**: to find out where your Personal Plugins folder is, open Wireshark and go to **Help->About Wireshark** and it will be listed in the **Folders** tab. You may need to create the folder the first time.
 
 # Links
-* [GraphvizOnline](https://dreampuf.github.io/GraphvizOnline)
