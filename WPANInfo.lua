@@ -210,9 +210,9 @@ function wpanlookup.dissector(tvb, pinfo, tree)
     dst = tostring( dst )
 
     -- Add the result to the tree
-    subtree:add(f_src, src )
+    subtree:add(f_src, ChangeAddress(src) )
     subtree:add(f_srcname, GetLookup(src) )
-    subtree:add(f_dst, dst )
+    subtree:add(f_dst, ChangeAddress(dst) )
     subtree:add(f_dstname, GetLookup(dst) )
         
     if enable_map == true then
